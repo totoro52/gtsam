@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9...3.29)
 if (POLICY CMP0167)
 cmake_policy(SET CMP0167 OLD) # Don't complain about boost
 endif()
-
+ 
 # Set the version number for the library
 set (GTSAM_VERSION_MAJOR 4)
 set (GTSAM_VERSION_MINOR 3)
