@@ -117,7 +117,8 @@ jobs:
                 -DGTSAM_ALLOW_DEPRECATED_SINCE_V43=OFF \
                 -DBOOST_ROOT="${BOOST_ROOT}" \
                 -DBOOST_INCLUDEDIR="${BOOST_ROOT}\boost\include" \
-                -DBOOST_LIBRARYDIR="${BOOST_ROOT}\lib"
+                -DBOOST_LIBRARYDIR="${BOOST_ROOT}\lib" \
+                -GTSAM_INSTALL_MATLAB_TOOLBOX=ON
 
       - name: Build
         shell: bash
@@ -126,6 +127,7 @@ jobs:
           # https://stackoverflow.com/a/24470998/1236990
           cmake --build build -j4 --config ${{ matrix.build_type }} --target gtsam
           cmake --build build -j4 --config ${{ matrix.build_type }} --target gtsam_unstable
+          cmake --build build -j4 --config ${{ matrix.build_type }} --target gtsam_matlab_wrapper
           cmake --build build -j4 --config ${{ matrix.build_type }} --target all.tests
 
       - name: Test
